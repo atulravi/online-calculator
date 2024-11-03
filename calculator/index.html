@@ -1,0 +1,408 @@
+<html>
+<head>
+<meta name="author" content="Atul Ravi aka ESC crasci/AtrivaQ">
+<meta name="description" content="A science hobbyist site with interesting projects and content">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://esccrasci.in/css/button.css">
+<title>Scientific Calculator</title>
+<style>
+//Selector
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f39c12;
+}
+h1 {
+  margin: 0 0 0.25em;
+}
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  line-height: 3;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #34495e;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+</style>
+<style>
+html {
+  height:100%;
+}
+
+body {
+  margin:0;
+}
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+</style>
+<script lang="text/javascript">
+//Calculation Code
+	function endisfn(){
+	
+	var selelement = document.getElementById("selformula");
+	var seloption = selelement.options[selelement.selectedIndex].value;
+	//Acceleration blocker
+	if (parseInt(seloption) == 1) 
+		{
+		document.getElementById("a").disabled = true;
+		document.getElementById("e").disabled = true;
+		document.getElementById("c").disabled = true;
+		document.getElementById("d").disabled = true;
+		document.getElementById("f").disabled = true;
+		document.getElementById("h").disabled = true;
+		document.getElementById("i").disabled = true;
+		document.getElementById("j").disabled = true;
+		return;
+		}
+	else
+	{
+		document.getElementById("a").disabled = false;
+		document.getElementById("e").disabled = false;
+		document.getElementById("c").disabled = false;
+		document.getElementById("d").disabled = false;
+		document.getElementById("f").disabled = false;
+		document.getElementById("h").disabled = false;
+		document.getElementById("i").disabled = false;
+		document.getElementById("j").disabled = false;
+	}
+	
+	//T-Fall blocker
+	if (parseInt(seloption) == 2) 
+		{
+		document.getElementById("a").disabled = true;
+		document.getElementById("b").disabled = true;
+		document.getElementById("c").disabled = true;
+		document.getElementById("d").disabled = true;
+		document.getElementById("e").disabled = true;
+		document.getElementById("f").disabled = true;
+		document.getElementById("g").disabled = true;
+		document.getElementById("j").disabled = true;
+		return;
+		}
+	else
+	{
+		document.getElementById("a").disabled = false;
+		document.getElementById("b").disabled = false;
+		document.getElementById("c").disabled = false;
+		document.getElementById("d").disabled = false;
+		document.getElementById("e").disabled = false;
+		document.getElementById("f").disabled = false;
+		document.getElementById("g").disabled = false;
+		document.getElementById("j").disabled = false;
+	}
+	//Distance with speed 
+	if (parseInt(seloption) == 3) 
+		{
+		document.getElementById("c").disabled = true;
+		document.getElementById("d").disabled = true;
+		document.getElementById("e").disabled = true;
+		document.getElementById("f").disabled = true;
+		document.getElementById("g").disabled = true;
+		document.getElementById("h").disabled = true;
+		document.getElementById("i").disabled = true;
+		document.getElementById("j").disabled = true;
+		return;
+		}
+	else
+	{
+		document.getElementById("c").disabled = false;
+		document.getElementById("d").disabled = false;
+		document.getElementById("e").disabled = false;
+		document.getElementById("f").disabled = false;
+		document.getElementById("g").disabled = false;
+		document.getElementById("h").disabled = false;
+		document.getElementById("i").disabled = false;
+		document.getElementById("j").disabled = false;
+	}
+	//Dist with V and T
+	if (parseInt(seloption) == 4) 
+		{
+		document.getElementById("a").disabled = true;
+		document.getElementById("j").disabled = true;
+		document.getElementById("d").disabled = true;
+		document.getElementById("e").disabled = true;
+		document.getElementById("g").disabled = true;
+		document.getElementById("h").disabled = true;
+		document.getElementById("i").disabled = true;
+		return;
+		
+		
+		}
+	else
+	{
+		document.getElementById("a").disabled = false;
+		document.getElementById("j").disabled = false;
+		document.getElementById("d").disabled = false;
+		document.getElementById("e").disabled = false;
+		document.getElementById("g").disabled = false;
+		document.getElementById("h").disabled = false;
+		document.getElementById("i").disabled = false;
+		
+	}
+	//Dist with V and A
+	if (parseInt(seloption) == 5) 
+		{
+		document.getElementById("a").disabled = true;
+		document.getElementById("b").disabled = true;
+		document.getElementById("d").disabled = true;
+		document.getElementById("e").disabled = true;
+		document.getElementById("h").disabled = true;
+		document.getElementById("i").disabled = true;
+		document.getElementById("j").disabled = true;
+		return;
+		
+		
+		}
+	else
+	{
+		document.getElementById("a").disabled = false;
+		document.getElementById("b").disabled = false;
+		document.getElementById("d").disabled = false;
+		document.getElementById("e").disabled = false;
+		document.getElementById("h").disabled = false;
+		document.getElementById("i").disabled = false;
+		document.getElementById("j").disabled = false;
+		
+	}
+	//force
+	if (parseInt(seloption) == 6) 
+		{
+		document.getElementById("a").disabled = true;
+		document.getElementById("b").disabled = true;
+		document.getElementById("i").disabled = true;
+		document.getElementById("e").disabled = true;
+		document.getElementById("f").disabled = true;
+		document.getElementById("g").disabled = true;
+		document.getElementById("j").disabled = true;
+		document.getElementById("h").disabled = true;
+		return;
+		
+		
+		}
+	else
+	{
+		document.getElementById("a").disabled = false;
+		document.getElementById("b").disabled = false;
+		document.getElementById("e").disabled = false;
+		document.getElementById("f").disabled = false;
+		document.getElementById("g").disabled = false;
+		document.getElementById("h").disabled = false;
+		document.getElementById("i").disabled = false;
+		document.getElementById("j").disabled = false;
+		
+	}
+	}
+	
+	
+	
+	function calculateval(){
+	
+	
+	var selelement = document.getElementById("selformula");
+	var seloption = selelement.options[selelement.selectedIndex].value;
+	var a=document.getElementById("a").value;
+	var b=document.getElementById("b").value;
+	var c=document.getElementById("c").value;
+	var d=document.getElementById("d").value;
+	var e=document.getElementById("e").value;
+	var f=document.getElementById("f").value;
+	var g=document.getElementById("g").value;
+	var h=document.getElementById("h").value;
+	var i=document.getElementById("i").value;
+	var j=document.getElementById("j").value;
+
+	
+	if (parseInt(seloption) == 3) 
+		{
+		var nfinalresult = parseFloat(a)* parseFloat(b);
+		document.getElementById("nfinalresult").value=nfinalresult;
+		}
+	if (parseInt(seloption) == 2)
+		{
+		var nfinalresult = Math.sqrt((2*parseFloat(h))/ parseFloat(i));
+		document.getElementById("nfinalresult").value=nfinalresult;
+		}
+	if (parseInt(seloption) == 1)
+		{
+		var nfinalresult = parseFloat(g)/ parseFloat(b);
+		document.getElementById("nfinalresult").value=nfinalresult;
+		}
+	if (parseInt(seloption) == 4)
+		{
+		var nfinalresult = (parseFloat(f)*parseFloat(b))+(0.5*parseFloat(c)*Math.pow(parseFloat(b),2));
+		document.getElementById("nfinalresult").value=nfinalresult;
+		}
+	if (parseInt(seloption) == 5)
+		{
+		var nfinalresult = ((Math.pow(parseFloat(g),2))- (Math.pow(parseFloat(f),2)))/(2*parseFloat(c));
+		document.getElementById("nfinalresult").value=nfinalresult;
+		}
+	if (parseInt(seloption) == 6)
+		{
+		var nfinalresult = (parseFloat(d)*parseFloat(c));
+		document.getElementById("nfinalresult").value=nfinalresult;
+		}
+	}
+</script>
+
+</head>
+
+<body>
+<!-- page design -->
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="content">
+<center>
+<!-- Selector -->
+<div class="select">
+  <select name="selformula" id="selformula" onchange="endisfn();">
+    <option value="0" selected disabled>Choose a Calculator</option>
+    <option value="1">Acceleration</option>
+    <option value="2">T-Fall</option>
+    <option value="3">Distance with speed</option>
+	<option value="4">Distance with v and t</option>
+    <option value="5">Distance with v and a</option>
+    <option value="6">Force </option>
+  </select>
+</div>
+<!-- Variable Declaration -->
+	<input type="text" id="a" name="1a" placeholder="Put Speed Here"></input>
+<br>
+	<input type="text" id="b" name="2a" placeholder="Put Time Here"></input>
+<br>
+	<input type="text" id="c" name="3a" placeholder="Put Acceleration Here"></input>
+<br>
+	<input type="text" id="d" name="4a" placeholder="Put Mass Here"></input>.
+<br>
+	<input type="text" id="e" name="5a" placeholder="Put Weight Here"></input>
+<br>
+	<input type="text" id="f" name="6a" placeholder="Put Initial Velocity Here"></input>
+<br>
+	<input type="text" id="g" name="7a" placeholder="Put Velocity Here"></input>
+<br>
+	<input type="text" id="h" name="8a" placeholder="Put Height Here"></input>
+<br>
+	<input type="text" id="i" name="9a" placeholder="Put Gravity Here"></input>
+<br>
+	<input type="text" id="j" name="10a" placeholder="Put Distance Here"></input>
+<br>
+	
+	<input id="nfinalresult" name="nfinalresult" readonly></input>
+<br>
+<!-- Buttons -->
+<button class="button button2" onclick="calculateval();">
+	Calculate
+</button>
+<br>
+<a href="https://buymeacoffee.com/esccrasci">
+	<button class="button">
+		Support This Project
+	</button>
+</a>
+&nbsp;
+<button class="button button3" onclick=location.reload()>
+	Press To Reset
+</button>
+<!-- end of all main items -->
+<br>
+</center>
+</div>
+<!-- END OF MAIN CODE -->
+</body>
+</html>
